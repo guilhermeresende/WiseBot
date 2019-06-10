@@ -24,8 +24,8 @@ def avg_vector(vectors):
 
 messages = {}
 # create dictionary with user and list of messages
-for file in os.listdir("/messages"):
-	f = open(file,"r")
+for file in os.listdir("messages"):
+	f = open("messages/"+file,"r")
 	line = f.readline()
 
 	while (line != ""):
@@ -47,13 +47,13 @@ corpus =[]
 for name in messages:
 	for message in messages[name]:
 		corpus.append(list(gensim.utils.tokenize(message)))
-
+print(corpus)
 model = Word2Vec(corpus, size=200, window=5, min_count=1, workers=4)
 
 messages_vec = {}
 #create dictionary with user and vector of preceding message
-for file in os.listdir("/messages"):
-	f = open(file,"r")
+for file in os.listdir("messages"):
+	f = open("messages/"+file,"r")
 	text = "a"
 	line = f.readline()
 	while (line != ""):
